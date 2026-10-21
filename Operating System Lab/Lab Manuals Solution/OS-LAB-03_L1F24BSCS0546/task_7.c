@@ -27,6 +27,7 @@ int main() {
     printf("ID: %d\n", e.id);
     printf("Name: %s\n", e.name);
     printf("Age: %d\n", e.age);
+    e.pay = 1.21222222;
     printf("Pay: %.2f\n", e.pay);
 
     return 0;
