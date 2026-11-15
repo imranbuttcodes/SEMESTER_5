@@ -1,0 +1,2 @@
+Hello from Operating Systems!
+This output goes into a file.
