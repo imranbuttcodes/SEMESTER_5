@@ -17,7 +17,7 @@ def ucs(graph, start, goal):
         visited.add(node)
 
         if node == goal:
-            return path, cost
+            return path, cost, pq
 
         for neighbour, weight in graph[node]:
             if neighbour not in visited:
@@ -26,7 +26,7 @@ def ucs(graph, start, goal):
                     (cost + weight, neighbour, path + [neighbour])
                 )
 
-        return None, float("inf")
+    return None, float("inf")
 
 
 graph = {
@@ -39,8 +39,10 @@ graph = {
     'F': [('G', 20)],
 }
 
-path, cost = ucs(graph, 'A', 'G')
+path, cost,pq = ucs(graph, 'A', 'G')
 
-print('path:', path)
-print('Cost:', cost)
+# print('path:', path)
+# print('Cost:', cost)
+
+print(pq)
             
