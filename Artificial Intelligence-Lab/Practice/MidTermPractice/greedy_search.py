@@ -66,9 +66,6 @@
 # greedy_search(graph, heuristic, 'A', 'G')
 
 
-
-
-
 def greedy_search(graph, heuristic, start, goal):
 
     open_list = [(heuristic[start], start, [start])]
