@@ -5,7 +5,7 @@ int main() {
      int l;
      printf("Enter len of array");
      scanf("%d",&l);
-    int val;
+     int val;
 
    int* arr = (int* )malloc(4 * l);
 

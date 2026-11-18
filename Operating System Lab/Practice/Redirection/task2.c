@@ -24,6 +24,7 @@ int main() {
     }
 
     if (pid1 == 0) {
+    
         close(fd[0]);
 
         dup2(fd[1], 1);
@@ -36,15 +37,15 @@ int main() {
         exit(1);
     
     } else {
-        
+    
         close(fd[1]);
 
         dup2(fd[0], 0);
-
+        printf("BR1\n");
         close(fd[1]);
-    
+
         execlp("wc", "wc", NULL);
- 
+        
         
         perror("execlp wc");
         exit(1);

@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < n; i++) {
         arr[i] = atoi(argv[i + 1]);
     }
-
+ 
     int fd1[2], fd2[2], fd3[2], fd4[2];
 
     if (pipe(fd1) == -1 ||
