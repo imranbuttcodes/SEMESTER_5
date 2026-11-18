@@ -46,6 +46,7 @@
 
 
 
+import heapq
 def greedy_search(graph, heuristic, start, goal):
     
     open_list = [(heuristic[start], start)]
@@ -111,7 +112,160 @@ def greedy_search_with_all_paths(graph, heuristic, start, goal):
 
 
      
+from collections import deque     
+def bfs(graph, start, goal):
+    open_list = deque([start])
 
+    visited = {start}
+
+    parent = {
+        start: (None, 0)
+    }
+
+    while open_list:
+        node = open_list.popleft()
+
+        if node == goal:
+            path = []
+            cost = 0
+
+            while node:
+                path.append(node)
+
+                node , c = parent[node]
+
+                cost += c
+            
+            path.reverse()
+
+
+            return path, cost
+        
+        for neighbour, weight in graph[node]:
+            if neighbour not in visited and neighbour not in parent:                
+                
+                parent[neighbour] = node, weight
+                open_list.append(neighbour)
+                visited.add(neighbour)
+        
+    return None, 0
+    
+
+def usc(graph, start, goal):
+    open_list = [(0, start, [start])]
+
+    all_paths = []
+    
+    while open_list:
+        
+        cost, node, path = heapq.heappop(open_list)
+        
+        if node == goal:
+            all_paths.append((path, cost))
+            continue
+        
+        for neighbour, weight in graph[node]:
+            if neighbour not in path:
+                heapq.heappush(open_list, 
+                (cost + weight, neighbour, path + [neighbour]))
+
+    print("---------- All Paths -------------")
+    for path, cost in all_paths:
+        print("PATH: ", "->".join(path), " | Cost: ", cost)
+    print("-"*20)
+    print("-"*10, " Optimal Path ", "-"*10)
+    opt_path, opt_cost = min(all_paths, key=lambda x:x[1])
+
+    print("PATH: ", " -> ".join(opt_path), " COST| ",  opt_cost)
+    print("-"*20)
+    return None, 0
+
+
+# def greedy_search_(graph, heuristic, start, goal):
+
+#     open_list = [(heuristic[start], start, [start])]
+
+#     all_paths = []
+
+#     while open_list:
+#         open_list.sort()
+        
+#         h_val, node, path = open_list.pop(0)
+
+#         if node == goal:
+#             all_paths.append((path, h_val))
+
+#             continue
+    
+#         for neighor in graph[node]:
+#             if neighor not in path:
+#                 open_list.append((heuristic[neighor], neighor, path + [neighor]))
+        
+    
+#     print("ALL PATHS: ")
+
+#     for path, h_val in all_paths:
+#         print("PATH: ", "->".join(path), " |H_VAL: ", h_val)
+#     print()
+
+#     print("OPTIMAL")
+#     ??
+
+
+
+def a_star(graph, heuristic, start, goal):
+    # (f, g, node, path)
+    open_list = [(heuristic[start], 0, start, [start])]
+
+    all_paths = []
+
+    while open_list:
+
+        f_val, g_val, node, path = open_list.pop(0)
+
+        if node == goal:
+            all_paths.append((path, g_val))
+            continue
+
+        for neighbor, weight in graph[node]:
+            if neighbor not in path:
+                hval = heuristic[neighbor]
+
+                new_g_val = g_val + weight
+
+                new_path = path + [neighbor]
+
+                new_fval = hval + new_g_val
+                open_list.append((new_fval, new_g_val, neighbor, path + [neighbor]))
+
+    if all_paths:
+        print("---------- ALL PATHS -----------")
+        for path, cost in all_paths:
+            print("PATH: ", " -> ".join(path), " | Cost: ", cost)
+        print()
+        
+        print("-------------- Optimal PATH --------------")
+        opt_path, opt_cost = min(all_paths, key=lambda x:x[1])
+
+        print("PATH: ", ' -> '.join(opt_path), " |Cost: ", opt_cost)
+
+
+    return opt_path, opt_cost
+
+
+        
+        
+
+
+graph_cost = {
+    'A': [('B', 11), ('C',14) , ('D',7)],
+    'B': [('E', 15)],
+    'E': [('H', 9)],
+    'H': [('G', 10)],
+    'C': [('E', 8), ('F', 10)],
+    'D': [('F', 25)],
+    'F': [('G', 20)],
+}
 
 
 graph = {
@@ -123,19 +277,29 @@ graph = {
     'F': [],
     'G': []
 }
-
 heuristic = {
-    'A': 6,
-    'B': 4,
-    'C': 2,
-    'D': 5,
-    'E': 3,
-    'F': 1,
+    'A': 30,
+    'B': 25,
+    'C': 15,
+    'D': 20,
+    'E': 18,
+    'F': 10,
+    'H': 10,
     'G': 0
 }
 
 
-path = greedy_search_with_all_paths(graph, heuristic, 'A', 'G')
+
+# path, cost = bfs(graph_cost, 'A', 'G')
+
+# print("PATH:", " -> ".join(path))
+# print("cost: ", cost)
+
+#usc(graph_cost, 'A' ,'G')
+#path = greedy_search_with_all_paths(graph, heuristic, 'A', 'G')
+
+
+path, cost = a_star(graph_cost, heuristic, 'A', 'G')
 
 # print(path)
 

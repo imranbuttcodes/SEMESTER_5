@@ -22,7 +22,7 @@ def astar(graph, heuristic, start, goal):
                 new_gval = g_val + weight
                 f_val = new_gval + new_hval
 
-                open_list.append((new_hval, new_gval, neighbour, path + [neighbour]))
+                open_list.append((f_val, new_gval, neighbour, path + [neighbour]))
         
     
     print("\nAll Possible Paths:")
