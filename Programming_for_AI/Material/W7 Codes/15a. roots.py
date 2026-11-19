@@ -9,7 +9,7 @@ Created on Wed Apr  1 04:09:48 2026
 import numpy as np
 
 # Coefficients are [1, -3, 2] for 1*x**2 + -3*x**1 + 2*x**0
-coefficients = [1, -3, 2, -5, 0]
+coefficients = [1, -5, 6]
 
 # Use numpy.roots to find the roots
 roots = np.roots(coefficients)

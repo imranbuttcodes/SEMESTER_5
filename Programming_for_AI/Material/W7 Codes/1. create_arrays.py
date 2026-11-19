@@ -14,10 +14,12 @@ arr_1d = np.array([10, 20, 30])
 # 2D Array (Matrix) - Think of it as a list of lists
 matrix = np.array([[1, 2], [3, 4], [5, 6]]) 
 
+print(matrix)
 # ND Array (3D Example: 2 layers, 3 rows, 2 columns)
 # Common in Medical Imaging (CT scans are 3D)
-arr_3d = np.zeros((2, 3, 2)) 
+arr_3d = np.zeros((2, 3, 2))
 
-print(arr_3d)
+arr_3d = arr_3d + 10
+
 
 # print(arr_1d)

@@ -21,8 +21,9 @@ class AIModel(ABC):
 class NeuralNet(AIModel):
     def train(self, data):
         print(f"Training Neural Net on {len(data)} samples")
-
+    pass
 # model = AIModel() # Error! Cannot instantiate abstract class
-nn = NeuralNet()
-nn.train([1, 2, 3])
-nn.save_model()
+# nn = NeuralNet()
+
+# nn.train([1, 2, 3])
+# nn.save_model()
