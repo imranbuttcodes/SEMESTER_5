@@ -7,10 +7,15 @@ Created on Wed Mar  4 01:48:55 2026
 """
 
 # Useful in sorting
-points = [(1, 2), (15, 1), (9, 10), (13, -3)]
-points.sort(key=lambda p: p[0]+p[1]) # Sort by the second element (y-coordinate)
 
-print(points)
+points = [(1, 2), (15, 1), (9, 10), (13, -3)]
+# points.sort(key=lambda p: p[0]+p[1]) # Sort by the second element (y-coordinate)
+
+
+
+# points.sort(key=lambda x: x[1] + x[0], reverse= True)
+
+# print(points)
 
 # print only 1st value from tuple
 
@@ -23,4 +28,9 @@ print(points)
 # print(x_coords)
 
 #using unpacking
-# print(*(p[0] for p in points))
+print(*(p[0] for p in points))
+
+# for p, o in points:
+#     print(p,o)
+
+# print((*p[0] for p in points))

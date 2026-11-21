@@ -9,6 +9,7 @@ Created on Wed Mar 11 00:19:09 2026
 def fibonacci_gen(limit):
     a, b = 0, 1
     count = 0
+    print("Here I'm ")
     while count < limit:
         yield a
         a, b = b, a + b

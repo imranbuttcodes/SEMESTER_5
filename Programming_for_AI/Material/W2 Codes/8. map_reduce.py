@@ -10,6 +10,8 @@ from functools import reduce
 
 nums = [1, 2, 3, 4, 5, 6]
 
+sum = reduce(lambda x, y: x + y, nums)
+print(sum)
 # # MAP: Double every number
 # doubled = list(map(lambda x: x * 2, nums))
 # print("doubled after map", doubled)

@@ -4,5 +4,5 @@
 # To iterate over a list directly
 fruits = ["Apple", "Mango", "Orange", 'Cheeko']
 
-for index, fruit in enumerate(fruits):
-    print(f"{index+1}. I like {fruit}")
+for index, fruit in enumerate(fruits, 1):
+    print(f"{index}. I like {fruit}")
