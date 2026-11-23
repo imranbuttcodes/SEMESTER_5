@@ -14,11 +14,11 @@ class Model(LoggerMixin):
     def train(self):
         self.log("Starting training...")
         
-class MyAIModel(LoggerMixin):
-    def train(self):
-        self.log("Epoch 1 started")
-        self.log("Loss: 0.045")
+# class MyAIModel(LoggerMixin):
+#     def train(self):
+#         self.log("Epoch 1 started")
+#         self.log("Loss: 0.045")
 
-model = MyAIModel()
+model = Model()
 model.train()
 # Output: [LOG - MyAIModel]: Epoch 1 started ...

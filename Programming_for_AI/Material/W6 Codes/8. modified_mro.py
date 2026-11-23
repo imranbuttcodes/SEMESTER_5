@@ -13,7 +13,7 @@ class BaseData:
     def info(self): print("Base Data")
 
 class SQL_Source:
-    def info(self): print("SQL Source")
+    def info(self): print("SQL Source"); super().info()
 
 # Dynamically creating a class. 
 # We decide the MRO (SQL_Source first, then BaseData) at runtime.

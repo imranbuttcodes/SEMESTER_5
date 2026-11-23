@@ -7,13 +7,19 @@ Created on Tue Mar 24 17:13:41 2026
 """
 
 class A:
-    def speak(self): print("A")
+    def speak(self): 
+        print("A")
 class B(A):
-    def speak(self): print("B"); super().speak()
+    def speak(self):
+        print("B")
+        super().speak()
 class C(A):
-    def speak(self): print("C"); super().speak()
+    def speak(self): 
+        print("C") 
+        super().speak()
 class D(B, C):
-    def speak(self): super().speak()
+    def speak(self): 
+        super().speak()
     
 d_obj = D()
 d_obj.speak()

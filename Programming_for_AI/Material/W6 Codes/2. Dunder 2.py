@@ -6,6 +6,8 @@ Created on Tue Mar 24 15:59:34 2026
 @author: awais
 """
 
+from asyncio import FastChildWatcher
+from scipy.stats._levy_stable import _pdf_single_value_cf_integrate
 class Signal:
     def __init__(self, data):
         self.data = data # List of voltages
@@ -25,3 +27,5 @@ print(f"Signal length: {len(sig1)}")  # Output: 3
 # Using __add__ (Operator Overloading)
 combined_sig = sig1 + sig2
 print(f"Combined data: {combined_sig.data}")  # Output: [2.0, 4.0, 6.0]
+
+

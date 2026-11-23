@@ -10,6 +10,7 @@ class Sensor:
     def __init__(self, sensor_id):
         self.sensor_id = sensor_id
 
+    
     def get_reading(self):
         return "Generic sensor reading: 0.0"
 
